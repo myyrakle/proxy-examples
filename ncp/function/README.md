@@ -1,14 +1,18 @@
 # Naver Proxy
 
+- Naver Cloud Function을 이용한 API 프록시
+
 ## 배포
 
 설치
+
 ```bash
 cd ncp
 npm i
 ```
 
 압축
+
 ```bash
 cd naver-proxy
 zip -r naver.zip ./*

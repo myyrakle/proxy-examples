@@ -1,6 +1,6 @@
 # Cloudflare Proxy
 
-- Cloudflare worker를 이용한 프록시
+- Cloudflare worker를 이용한 API 프록시
 
 ## 사용방법
 
