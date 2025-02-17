@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-delete axios.defaults.headers.get['User-Agent'];
-delete axios.defaults.headers.common['Accept'];
-delete axios.defaults.headers.common['Content-Type'];
-
 export const handler = async (event) => {
   // console.log(event);
 
@@ -22,6 +18,10 @@ export const handler = async (event) => {
     const url = requestContext.url; 
     const method = requestContext.method ?? 'get';
     const headers = requestContext.headers;
+
+    if(!headers['User-Agent']) {
+      headers['User-Agent'] = null;
+    }
     
     if(!url) {
       return {
@@ -38,7 +38,7 @@ export const handler = async (event) => {
         response = await axios.get(url, {
           headers: headers,
           validateStatus: function (status) {
-            return status >= 200 && status < 600; 
+            return status >= 200 && status < 600; // 모든 상태코드를 정상 응답으로 처리
           },
         });
     }
