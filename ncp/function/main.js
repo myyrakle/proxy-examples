@@ -1,9 +1,5 @@
 const axios = require('axios');
 
-delete axios.defaults.headers.get['User-Agent'];
-delete axios.defaults.headers.common['Accept'];
-delete axios.defaults.headers.common['Content-Type'];
-
 async function main(params) {
     // const headers = params.__ow_headers;
     // const method = params.__ow_method;
@@ -33,6 +29,10 @@ async function main(params) {
         const method = requestContext.method || 'get';
         const headers = requestContext.headers;
 
+        if(!headers['User-Agent']) {
+              headers['User-Agent'] = null;
+        }
+        
         if (!url) {
             return {
                 statusCode: 400,
